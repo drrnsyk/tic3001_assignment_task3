@@ -1,4 +1,4 @@
-package tic3001.task3.controller;
+package tic3001.task3.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

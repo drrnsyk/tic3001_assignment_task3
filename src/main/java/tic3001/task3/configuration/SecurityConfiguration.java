@@ -1,5 +1,6 @@
 package tic3001.task3.configuration;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationProvider;
@@ -18,7 +19,10 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class SecurityConfiguration {
     
+    @Autowired
     private final JwtAuthenticationFilter jwtAuthFilter;
+
+    @Autowired
     private final AuthenticationProvider authenticationProvider;
 
     // Spring Security Authentication and Authorization Demo

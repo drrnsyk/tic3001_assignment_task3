@@ -1,5 +1,6 @@
 package tic3001.task3.configuration;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -18,6 +19,7 @@ import tic3001.task3.user.UserRepository;
 @RequiredArgsConstructor
 public class ApplicationConfig {
 
+    @Autowired
     private final UserRepository userRepository;
     
     // @Bean

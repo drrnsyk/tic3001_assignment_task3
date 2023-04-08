@@ -1,5 +1,6 @@
-package tic3001.task3.controller;
+package tic3001.task3.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
@@ -8,6 +9,9 @@ import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
 import tic3001.task3.configuration.JwtService;
+import tic3001.task3.model.AuthenticationRequest;
+import tic3001.task3.model.AuthenticationResponse;
+import tic3001.task3.model.RegisterRequest;
 import tic3001.task3.user.User;
 import tic3001.task3.user.UserRepository;
 
@@ -16,9 +20,16 @@ import tic3001.task3.user.UserRepository;
 @RequiredArgsConstructor
 public class AuthenticationService {
 
+    @Autowired
     private final UserRepository userRepository;
+
+    @Autowired
     private final PasswordEncoder passwordEncoder;
+
+    @Autowired
     private final JwtService jwtService;
+
+    @Autowired
     private final AuthenticationManager authenticationManager;
 
     // create user, save to database, returns the jwt
