@@ -8,6 +8,7 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
@@ -24,6 +25,9 @@ public class SecurityConfiguration {
 
     @Autowired
     private final AuthenticationProvider authenticationProvider;
+
+    @Autowired
+    private final AuthenticationEntryPoint entryPoint;
 
     // Spring Security Authentication and Authorization Demo
     // @Bean
@@ -51,6 +55,8 @@ public class SecurityConfiguration {
             .and()
             .sessionManagement()
             .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+            .and()
+            .exceptionHandling().authenticationEntryPoint(entryPoint)
             .and()
             .authenticationProvider(authenticationProvider)
             .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
